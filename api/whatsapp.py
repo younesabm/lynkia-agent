@@ -35,7 +35,12 @@ async def receive_webhook(
     has_media = NumMedia > 0
 
     # Traiter le message avec l'agent
-    response = process_message(phone=phone, message=Body, has_media=has_media)
+    response = process_message(
+        phone=phone,
+        message=Body,
+        has_media=has_media,
+        media_url=MediaUrl0
+    )
 
     logger.info(f"Agent response: {response}")
 
@@ -57,13 +62,19 @@ async def process_direct(
     message: str,
     phone: str,
     has_media: bool = False,
+    media_url: Optional[str] = None,
 ):
     """
     Endpoint direct pour traiter un message sans passer par Twilio.
 
     Utile pour les tests et l'intégration avec d'autres systèmes.
     """
-    response = process_message(phone=phone, message=message, has_media=has_media)
+    response = process_message(
+        phone=phone,
+        message=message,
+        has_media=has_media,
+        media_url=media_url
+    )
     return response
 
 

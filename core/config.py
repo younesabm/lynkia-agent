@@ -11,6 +11,11 @@ class Settings(BaseSettings):
     # OpenAI Configuration
     openai_api_key: str = ""
 
+    # AWS Configuration
+    dynamodb_table_name: str = ""
+    s3_bucket_name: str = ""
+    aws_region_name: str = "eu-west-3"
+
     # Application Settings
     debug: bool = False
 
